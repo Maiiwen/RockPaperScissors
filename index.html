@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row text-center">
+        <h1>Rock, Paper, Scissors</h1>
+    </div>
+    <div class="row pt-2">
+        <div class="col-md-6">
+            <div class="card" id="opponent-card">
+                <div class="card-header text-center">
+                    <h4>Adversaire</h4>
+                </div>
+                <div class="card-body d-flex align-items-center" style="aspect-ratio: 1">
+                    <div id="current-opponent-selection" class="p-3 w-100">
+                        <img src="/images/sticker-block-interrogation.png" alt="" class="img-fluid w-100">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <h4>Score : <span id="opponent-score">0</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 card-group">
+            <div class="card" id="player-card">
+                <div class="card-header text-center">
+                    <h4>Vous</h4>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div id="left-selector" class="d-flex align-items-center">
+                            <button class="btn p-1"><i class="bi bi-arrow-left"></i></button>
+                        </div>
+                        <div id="current-player-selection" class="p-3 w-100" style="aspect-ratio: 1">
+                            <img src="/images/rock.png" alt="" class="img-fluid img-thumbnail w-100">
+                        </div>
+                        <div id="right-selector" class="d-flex align-items-center">
+                            <div class="btn p-1"><i class="bi bi-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center align-items-baseline">
+                    <button type="button" class="btn btn-warning mb-3" id="set-player-selection" style="width: 90%">
+                        Valider
+                    </button>
+                </div>
+                <div class="card-footer text-center">
+                    <h4>Score : <span id="player-score">0</span></h4>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <table class="table table-bordered" id="history-table">
+                <tr class="text-center">
+                    <td>
+                        <i class="bi bi-person-fill"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                </tr>
+                <tr class="text-center">
+                    <td>
+                        <i class="bi bi-pc"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                    <td>
+                        <i class="bi bi-circle-fill text-white"></i>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="assets/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

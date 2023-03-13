@@ -11,9 +11,9 @@ const opponentScoreEl = document.querySelector("#opponent-score")
 const currentOpponentSelectionEl = document.querySelector('#current-opponent-selection')
 const setPlayerSelectionButton = document.querySelector('#set-player-selection')
 const playerScoreEl = document.querySelector("#player-score")
-const scissorsImagePath = "/images/scissors.png"
-const paperImagePath = "/images/paper.png"
-const rockImagePath = "/images/rock.png"
+const scissorsImagePath = "images/scissors.png"
+const paperImagePath = "images/paper.png"
+const rockImagePath = "images/rock.png"
 const selections = {
     0: {
         name: "Scissors",
@@ -91,7 +91,7 @@ const runGame = async () => {
     opponentCard.classList.remove('text-bg-success')
     playerCard.classList.remove('text-bg-secondary')
     opponentCard.classList.remove('text-bg-secondary')
-    currentOpponentSelectionEl.firstElementChild.src = "/images/sticker-block-interrogation.png"
+    currentOpponentSelectionEl.firstElementChild.src = "images/sticker-block-interrogation.png"
     setPlayerSelectionButton.disabled = false
 }
 

@@ -10,7 +10,7 @@
 
 ### 🏠 [Homepage](https://github.com/Maiiwen/RockPaperScissors)
 
-### ✨ [Demo](/)
+### ✨ [Demo](https://maiiwen.github.io/RockPaperScissors/)
 
 ## Author
 

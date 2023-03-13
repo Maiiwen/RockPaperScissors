@@ -37,23 +37,25 @@ let currentPlayerSelection = 0
 let playerScore = 0
 let opponentScore = 0
 
-const changeSelection = (increment, currentSelection) => {
+const changeSelection = (increment, currentSelection, currentSelectionEl) => {
     currentSelection = (currentSelection + increment) % 3
     if (currentSelection < 0) {
         currentSelection = 2
     }
-    let imagePath = selections[currentSelection].imagePath
 
-    return [currentSelection, imagePath]
+    currentSelectionEl.firstElementChild.src = selections[currentSelection].imagePath
+
+    return currentSelection
 }
 
 const runGame = async () => {
+    setPlayerSelectionButton.disabled = true
     if (currentRound > 14) {
         setPlayerSelectionButton.disabled = true
         return;
     }
     for (let i = 0; i < Math.round(Math.random() * (30 - 5) + 5); i++) {
-        changeOpponentSelection(1)
+        currentOpponentSelection = changeSelection(1, currentOpponentSelection, currentOpponentSelectionEl)
         await sleep(100)
     }
     if (currentPlayerSelection === currentOpponentSelection) {
@@ -84,32 +86,19 @@ const runGame = async () => {
         setPlayerSelectionButton.disabled = true
 
     }
-    await sleep(1000)
+    await sleep(500)
     playerCard.classList.remove('text-bg-success')
     opponentCard.classList.remove('text-bg-success')
     playerCard.classList.remove('text-bg-secondary')
     opponentCard.classList.remove('text-bg-secondary')
     currentOpponentSelectionEl.firstElementChild.src = "/images/sticker-block-interrogation.png"
-
+    setPlayerSelectionButton.disabled = false
 }
 
-const changePlayerSelection = (increment) => {
-    let status = changeSelection(increment, currentPlayerSelection)
-    currentPlayerSelection = status[0]
-    currentPlayerSelectionEl.firstElementChild.src = status[1]
-}
-
-const changeOpponentSelection = (increment) => {
-    let status = changeSelection(increment, currentOpponentSelection)
-    currentOpponentSelection = status[0]
-    currentOpponentSelectionEl.firstElementChild.src = status[1]
-}
-
-leftSelectionButton.addEventListener('click', () => changePlayerSelection(1))
-rightSelectionButton.addEventListener('click', () => changePlayerSelection(-1))
+leftSelectionButton.addEventListener('click', () => currentPlayerSelection = changeSelection(1, currentPlayerSelection, currentPlayerSelectionEl))
+rightSelectionButton.addEventListener('click', () => currentPlayerSelection = changeSelection(-1, currentPlayerSelection, currentPlayerSelectionEl))
 setPlayerSelectionButton.addEventListener('click', runGame)
 
 
-changePlayerSelection(0)
-
+currentPlayerSelection = changeSelection(0, currentPlayerSelection, currentPlayerSelectionEl)
 

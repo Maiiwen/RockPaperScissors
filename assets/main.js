@@ -2,6 +2,7 @@ const sleep = (time) => {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 const historyTable = document.querySelector('#history-table').firstElementChild
+const modalRestartButton = document.querySelector('#end-modal-restart')
 const leftSelectionButton = document.querySelector("#left-selector")
 const rightSelectionButton = document.querySelector('#right-selector')
 const currentPlayerSelectionEl = document.querySelector('#current-player-selection')
@@ -84,7 +85,9 @@ const runGame = async () => {
     }
     if (currentRound > 14) {
         setPlayerSelectionButton.disabled = true
-
+        let endModal = new bootstrap.Modal(document.querySelector('#end-modal'))
+        endModal.show()
+        document.querySelector('#end-modal-text').innerText = opponentScore !== playerScore ? (opponentScore > playerScore ? "You lose ! (But you can restart to try again 👀)" : "Congratulation, you won this game ! 🎉") : "None of you have won this game 🤷"
     }
     await sleep(500)
     playerCard.classList.remove('text-bg-success')
@@ -98,7 +101,9 @@ const runGame = async () => {
 leftSelectionButton.addEventListener('click', () => currentPlayerSelection = changeSelection(1, currentPlayerSelection, currentPlayerSelectionEl))
 rightSelectionButton.addEventListener('click', () => currentPlayerSelection = changeSelection(-1, currentPlayerSelection, currentPlayerSelectionEl))
 setPlayerSelectionButton.addEventListener('click', runGame)
-
+modalRestartButton.addEventListener('click', () => {
+    location.reload();
+})
 
 currentPlayerSelection = changeSelection(0, currentPlayerSelection, currentPlayerSelectionEl)
 
